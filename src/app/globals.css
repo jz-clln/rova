@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --rova-deep-green: #1f5a4d;
+  --rova-sage: #5d9278;
+  --rova-meadow: #8fbe88;
+  --rova-soft-teal: #7faeaa;
+  --rova-sunrise: #f2c66d;
+  --rova-soft-amber: #e8b25c;
+  --rova-background: #f6f8f4;
+  --rova-surface: #ffffff;
+  --rova-border: #dce6df;
+  --rova-text: #20312c;
+  --rova-muted: #66766f;
+  --rova-success: #6ba67b;
+  --rova-warning: #d7a057;
+  --rova-error: #c97a6b;
+  --rova-info: #6fa7a0;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--rova-background); }
+body {
+  margin: 0;
+  background: var(--rova-background);
+  color: var(--rova-text);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
