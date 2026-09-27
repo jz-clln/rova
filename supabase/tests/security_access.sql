@@ -1,3 +1,4 @@
+-- supabase/tests/security_access.sql
 -- Run with: supabase db query --linked --file supabase/tests/security_access.sql
 -- All fixtures and helper functions are rolled back. No real account is created.
 begin;
