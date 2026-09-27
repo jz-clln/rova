@@ -1,3 +1,4 @@
+// src/lib/geo/distance.ts
 import type { GeoPoint } from "@/types";
 
 const EARTH_RADIUS_KM = 6371;
