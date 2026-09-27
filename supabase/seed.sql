@@ -1,3 +1,4 @@
+-- supabase/seed.sql
 insert into public.commodities (name, category, requires_cold_chain) values
   ('Cabbage', 'Vegetable', false),
   ('Tomato', 'Vegetable', false),
