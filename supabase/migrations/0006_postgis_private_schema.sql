@@ -1,3 +1,4 @@
+-- supabase/migrations/0006_postgis_private_schema.sql
 -- PostGIS is not relocatable on managed Supabase. Preserve geography values as
 -- lossless EWKB hex text, reinstall in extensions, then restore types and indexes.
 -- Explicit transaction: CLI execution modes do not all wrap migrations. No CASCADE is used:
