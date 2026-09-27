@@ -1,3 +1,4 @@
+-- supabase/migrations/0003_rls.sql
 -- Baseline RLS. Review and test every policy before production.
 
 alter table public.profiles enable row level security;
