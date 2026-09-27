@@ -1,3 +1,4 @@
+// src/config/brand.ts
 export const brand = {
   name: "Rova",
   tagline: "Shared agricultural freight",
