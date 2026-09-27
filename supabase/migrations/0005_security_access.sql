@@ -1,3 +1,4 @@
+-- supabase/migrations/0005_security_access.sql
 -- Keep privileged policy helpers outside the exposed API schema.
 create schema if not exists private;
 revoke all on schema private from public, anon;
