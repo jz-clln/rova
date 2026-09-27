@@ -1,3 +1,4 @@
+-- supabase/migrations/0002_schema.sql
 -- Rova MVP schema
 -- Scope: anchor buyer demand -> farm supply -> consolidation -> shared route -> direct B2B delivery -> receiver confirmation.
 
