@@ -1,3 +1,4 @@
+// src/config/navigation.ts
 import { LayoutDashboard, ClipboardList, PackageOpen, Route, Truck, CircleCheckBig, Shield } from "lucide-react";
 
 export const navigation = [
