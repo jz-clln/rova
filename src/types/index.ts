@@ -1,3 +1,4 @@
+// src/types/index.ts
 export type UserRole = "farmer" | "buyer" | "truck_operator" | "driver" | "admin";
 export type VerificationStatus = "unverified" | "pending" | "verified" | "rejected" | "suspended";
 export type RequirementStatus = "draft" | "open" | "matching" | "fulfilled" | "cancelled";
