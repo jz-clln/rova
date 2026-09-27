@@ -1,3 +1,4 @@
+-- supabase/migrations/0004_safe_views.sql
 -- Safe discovery surface for farmers.
 -- The view exposes only fields needed to decide whether a buyer requirement is relevant.
 -- Exact receiver phone numbers and private profile data are intentionally omitted.
