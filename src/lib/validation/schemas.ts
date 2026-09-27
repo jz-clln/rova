@@ -1,3 +1,4 @@
+// src/lib/validation/schemas.ts
 import { z } from "zod";
 
 export const geoPointSchema = z.object({
