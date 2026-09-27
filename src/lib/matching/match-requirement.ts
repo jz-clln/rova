@@ -1,3 +1,4 @@
+// src/lib/matching/match-requirement.ts
 import { haversineKm } from "@/lib/geo/distance";
 import type { BuyerRequirement, FarmerSupply, MatchCandidate, VehicleCapacity } from "@/types";
 
