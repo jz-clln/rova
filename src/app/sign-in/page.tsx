@@ -38,7 +38,11 @@ export default async function SignInPage() {
           <p className="mt-2 text-sm leading-6 text-[#66766f]">Sign in to continue your journey with Rova.</p>
           <SignInForm />
         </section>
-        <Link href="/" className="mx-auto mt-5 flex min-h-11 w-fit items-center rounded-md px-3 text-sm text-[#1f5a4d] hover:underline focus-visible:outline-2 focus-visible:outline-[#1f5a4d]">Back to Rova</Link>
+        <p className="mt-5 text-center text-sm text-[#66766f]">
+          New to Rova?{" "}
+          <Link href="/sign-up" className="font-semibold text-[#1f5a4d] hover:underline focus-visible:outline-2 focus-visible:outline-[#1f5a4d]">Create an account</Link>
+        </p>
+        <Link href="/" className="mx-auto mt-2 flex min-h-11 w-fit items-center rounded-md px-3 text-sm text-[#1f5a4d] hover:underline focus-visible:outline-2 focus-visible:outline-[#1f5a4d]">Back to Rova</Link>
       </div>
     </main>
   );
