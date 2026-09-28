@@ -10,6 +10,15 @@ export type PickupMode = "farm" | "collection_point";
 
 export interface GeoPoint { lat: number; lng: number }
 
+export interface Profile {
+  id: string;
+  role: UserRole;
+  full_name: string;
+  phone: string | null;
+  business_name: string | null;
+  verification_status: VerificationStatus;
+}
+
 export interface BuyerRequirement {
   id: string;
   buyerId: string;
