@@ -151,7 +151,7 @@ export default function HomePage() {
         .rova-landing .mobile-nav-panel { position: absolute; top: calc(100% + 10px); right: 0; z-index: 40; display: flex; flex-direction: column; min-width: 210px; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 11px; box-shadow: 0 18px 40px -14px #34482b30; }
         .rova-landing .mobile-nav-panel a { min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: 7px; font-size: 13px; font-weight: 500; color: var(--ink); }
         .rova-landing .mobile-nav-panel a:hover { background: #f1f5ed; }
-        .rova-landing .hero { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 54px; padding-block: 92px 84px; }
+        .rova-landing .hero { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 54px; padding-block: 44px 84px; }
         .rova-landing .hero::before { content: ''; position: absolute; width: 620px; height: 620px; border-radius: 50%; right: -240px; top: -100px; background: radial-gradient(circle, #e4ecd9 0%, #f6f8f400 68%); pointer-events: none; }
         .rova-landing .hero-copy, .rova-landing .journey { position: relative; }
         .rova-landing .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 10px; line-height: 1.5; font-weight: 700; letter-spacing: 1.9px; text-transform: uppercase; color: #496d55; }
@@ -253,13 +253,13 @@ export default function HomePage() {
           @supports (animation-timeline: view()) { .rova-landing .section-heading, .rova-landing .approach-copy, .rova-landing .closing-card { animation: rova-enter linear both; animation-timeline: view(); animation-range: entry 0% entry 20%; } }
         }
         @media (max-width: 1100px) {
-          .rova-landing .page-width { width: calc(100% - 64px); }.rova-landing .hero { gap: 28px; padding-block: 70px; }.rova-landing h1 { font-size: 58px; letter-spacing: -3px; }
+          .rova-landing .page-width { width: calc(100% - 64px); }.rova-landing .hero { gap: 28px; padding-block: 36px 70px; }.rova-landing h1 { font-size: 58px; letter-spacing: -3px; }
           .rova-landing .load-summary { flex-wrap: wrap; padding: 16px; }.rova-landing .load-status { margin-left: 54px; }
           .rova-landing .step { padding: 25px 18px; }.rova-landing .person-content { padding: 23px; }.rova-landing .approach-section { gap: 55px; }.rova-landing .community-link, .rova-landing .footer-note { display: none; }
         }
         @media (max-width: 800px) {
           .rova-landing .navigation { min-height: 76px; }.rova-landing .nav-sections { display: none; }.rova-landing .mobile-nav { display: block; position: relative; }
-          .rova-landing .hero { grid-template-columns: 1fr; gap: 43px; padding-block: 57px 55px; }.rova-landing .hero-copy { max-width: 570px; }.rova-landing h1 { font-size: clamp(53px, 8.6vw, 70px); }.rova-landing .hero-support { max-width: 455px; }
+          .rova-landing .hero { grid-template-columns: 1fr; gap: 43px; padding-block: 28px 55px; }.rova-landing .hero-copy { max-width: 570px; }.rova-landing h1 { font-size: clamp(53px, 8.6vw, 70px); }.rova-landing .hero-support { max-width: 455px; }
           .rova-landing .journey { width: min(100%, 570px); justify-self: center; transform: none; }.rova-landing .load-status { margin-left: 0; }
           .rova-landing .community-strip { gap: 20px; }.rova-landing .community-count { padding-left: 20px; flex-shrink: 0; }.rova-landing .community-intro p { max-width: 240px; }
           .rova-landing .section-heading { align-items: flex-start; flex-direction: column; gap: 20px; }.rova-landing .section-heading > p { max-width: 400px; }.rova-landing .flow-section, .rova-landing .approach-section { padding-block: 70px; }
