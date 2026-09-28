@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Page() {
   return (
-    <AppShell title="My produce" eyebrow="Confirmed supply">
+    <AppShell subtitle="My produce ? Confirmed supply">
       <Card>
         <CardHeader><CardTitle>Foundation module</CardTitle></CardHeader>
         <CardContent><p className="max-w-3xl leading-7 text-[#66766f]">Capture available quantity, harvest state, pickup mode, pickup window, and product specifications.</p></CardContent>

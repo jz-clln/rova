@@ -41,7 +41,7 @@ export default async function DriverHomePage() {
           <CardContent>
             <p className="text-2xl font-bold">{route ? `${Number(route.total_load_kg).toLocaleString()} kg` : "—"}</p>
             <p className="mt-1 text-sm text-[#66766f]">
-              {route?.planned_arrival ? `Delivery deadline: ${new Date(route.planned_arrival).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}` : "Check back once you're assigned a route."}
+              {route?.planned_arrival ? `Delivery deadline: ${new Date(route.planned_arrival).toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Manila" })}` : "Check back once you're assigned a route."}
             </p>
           </CardContent>
           <CardFooter><Button disabled={!route}>Start route</Button></CardFooter>
@@ -55,7 +55,7 @@ export default async function DriverHomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-[#66766f]">
-                {nextStop.planned_at ? new Date(nextStop.planned_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Time to be confirmed"}
+                {nextStop.planned_at ? new Date(nextStop.planned_at).toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Manila" }) : "Time to be confirmed"}
               </p>
             </CardContent>
             <CardFooter><Button variant="secondary">Navigate</Button></CardFooter>

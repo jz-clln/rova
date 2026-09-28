@@ -149,7 +149,7 @@ export default async function FarmerHomePage() {
                     A buyer needs {kg(topMatch.required_quantity_kg)} {topMatch.commodity_name}
                   </p>
                   <p className="mt-1 text-sm text-[#66766f]">
-                    Delivery by {new Date(topMatch.delivery_date).toLocaleDateString()}
+                    Delivery by {new Date(topMatch.delivery_date).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" })}
                   </p>
                 </div>
                 <PhotoPlaceholder label="Produce photo" />
@@ -171,7 +171,7 @@ export default async function FarmerHomePage() {
               <>
                 <p className="text-sm font-medium text-[#20312c]">{nextPickup.address}</p>
                 <p className="mt-1 text-sm text-[#66766f]">
-                  {nextPickup.planned_at ? new Date(nextPickup.planned_at).toLocaleString() : "Time to be confirmed"}
+                  {nextPickup.planned_at ? new Date(nextPickup.planned_at).toLocaleString("en-PH", { timeZone: "Asia/Manila" }) : "Time to be confirmed"}
                 </p>
               </>
             ) : (
@@ -196,7 +196,7 @@ export default async function FarmerHomePage() {
                 <ShipmentProgress status={currentShipment.route?.status} />
                 <p className="text-xs text-[#66766f]">
                   {currentShipment.route?.planned_arrival
-                    ? `Estimated arrival ${new Date(currentShipment.route.planned_arrival).toLocaleString()}`
+                    ? `Estimated arrival ${new Date(currentShipment.route.planned_arrival).toLocaleString("en-PH", { timeZone: "Asia/Manila" })}`
                     : "Estimated arrival not yet set"}
                 </p>
               </>
@@ -211,7 +211,7 @@ export default async function FarmerHomePage() {
           <CardContent>
             <p className="text-2xl font-bold">{payment ? `₱${Number(payment.amount_php).toLocaleString()}` : "—"}</p>
             <p className="mt-1 text-sm text-[#66766f]">
-              {payment ? new Date(payment.created_at).toLocaleDateString() : "No payments yet"}
+              {payment ? new Date(payment.created_at).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" }) : "No payments yet"}
             </p>
           </CardContent>
           {payment ? <CardFooter><Badge variant="info">Processing</Badge></CardFooter> : null}
@@ -239,7 +239,7 @@ export default async function FarmerHomePage() {
                   <tr key={row.id} className="border-b border-[#f1f5ed] last:border-0">
                     <td className="py-2.5">{row.commodities?.name ?? "Commodity"}</td>
                     <td className="py-2.5 text-[#66766f]">{kg(row.confirmed_quantity_kg ?? row.expected_quantity_kg)}</td>
-                    <td className="py-2.5 text-[#66766f]">{new Date(row.harvest_date).toLocaleDateString()}</td>
+                    <td className="py-2.5 text-[#66766f]">{new Date(row.harvest_date).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" })}</td>
                     <td className="py-2.5"><Badge variant={row.status === "confirmed" ? "success" : "outline"}>{row.status}</Badge></td>
                   </tr>
                 ))
@@ -271,7 +271,7 @@ export default async function FarmerHomePage() {
                 {shipments?.length ? (
                   shipments.map((row) => (
                     <tr key={row.id} className="border-b border-[#f1f5ed] last:border-0">
-                      <td className="py-2.5">{new Date(row.created_at).toLocaleDateString()}</td>
+                      <td className="py-2.5">{new Date(row.created_at).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" })}</td>
                       <td className="py-2.5 text-[#66766f]">{kg(row.quantity_kg)}</td>
                       <td className="py-2.5 text-[#66766f]">{row.route?.destination_address ?? "—"}</td>
                       <td className="py-2.5"><Badge variant={row.route?.status === "delivered" ? "success" : "info"}>{row.route?.status ?? "unassigned"}</Badge></td>

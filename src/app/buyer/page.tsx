@@ -82,7 +82,7 @@ export default async function BuyerHomePage() {
           <CardContent>
             <p className="text-sm text-[#66766f]">
               {activeRoute?.planned_arrival
-                ? `ETA ${new Date(activeRoute.planned_arrival).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+                ? `ETA ${new Date(activeRoute.planned_arrival).toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Manila" })}`
                 : "Awaiting route confirmation."}
             </p>
           </CardContent>
