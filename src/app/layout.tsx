@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Poppins, Raleway } from "next/font/google";
 
@@ -29,6 +29,15 @@ export const metadata: Metadata = {
     title,
     description,
   },
+};
+
+// Lets the app draw edge to edge on phones with notches and gesture bars,
+// and tints the browser bar to match the app background.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#F6F8F4",
 };
 
 export default function RootLayout({
