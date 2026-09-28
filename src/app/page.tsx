@@ -38,11 +38,13 @@ export default function HomePage() {
           <div className="nav-sections">{navLinks.map(({ href, label }) => <a key={href} href={href}>{label}</a>)}</div>
           <div className="nav-right">
             <Link href="/sign-in" className="nav-sign-in">Sign in <ArrowUpRight size={15} aria-hidden="true" /></Link>
+            <Link href="/sign-up" className="nav-get-started">Get started</Link>
             <details className="mobile-nav">
               <summary aria-label="Open menu"><Menu size={20} aria-hidden="true" /></summary>
               <div className="mobile-nav-panel">
                 {navLinks.map(({ href, label }) => <a key={href} href={href}>{label}</a>)}
                 <Link href="/sign-in">Sign in <ArrowUpRight size={14} aria-hidden="true" /></Link>
+                <Link href="/sign-up">Get started <ArrowUpRight size={14} aria-hidden="true" /></Link>
               </div>
             </details>
           </div>
@@ -55,7 +57,7 @@ export default function HomePage() {
           <h1 id="hero-title">Good harvests.<br /><span>Better journeys.</span></h1>
           <p className="hero-description">Bring farm supply together.<br />Move forward as one.</p>
           <p className="hero-support">Rova connects buyer demand, produce from multiple farms, and shared transport into one coordinated delivery.</p>
-          <div className="hero-actions"><Link href="/dashboard" className="button button-primary">Explore Rova <ArrowUpRight size={18} aria-hidden="true" /></Link><a href="#flow" className="button button-text">See how it works <ArrowDown size={16} aria-hidden="true" /></a></div>
+          <div className="hero-actions"><Link href="/sign-up" className="button button-primary">Get started <ArrowUpRight size={18} aria-hidden="true" /></Link><a href="#flow" className="button button-text">See how it works <ArrowDown size={16} aria-hidden="true" /></a></div>
           <div className="hero-note"><Leaf size={16} aria-hidden="true" /><span>Rooted in agriculture. Built around people.</span></div>
         </div>
 
@@ -75,7 +77,7 @@ export default function HomePage() {
       <section className="flow-section page-width" id="flow" aria-labelledby="flow-title">
         <div className="section-heading"><div><span className="eyebrow">A shared journey, made clear</span><h2 id="flow-title">From many farms.<br /><span>To one coordinated delivery.</span></h2></div><p>One connected workflow, from the buyer’s first requirement to the final confirmation of receipt.</p></div>
         <ol className="steps-grid">{steps.map(({ icon: Icon, title, description, detail }, index) => <li className="step" key={title}><div className="step-top"><span className="step-icon"><Icon size={23} strokeWidth={1.6} aria-hidden="true" /></span><span className="step-number">0{index + 1}</span></div><h3>{title}</h3><p>{description}</p><span className="step-detail">{detail}</span></li>)}</ol>
-        <div className="flow-example"><div className="example-copy"><span className="eyebrow">See the pieces come together</span><h3>Three farms.<br />One shared load.</h3><p>A simple example: three farms contribute 300, 250, and 450 kg of cabbage toward one buyer?s 1,000 kg requirement.</p><p>Separate harvests, coordinated around the same destination and receiving window.</p></div>
+        <div className="flow-example"><div className="example-copy"><span className="eyebrow">See the pieces come together</span><h3>Three farms.<br />One shared load.</h3><p>A simple example: three farms contribute 300, 250, and 450 kg of cabbage toward one buyer’s 1,000 kg requirement.</p><p>Separate harvests, coordinated around the same destination and receiving window.</p></div>
         <figure className="journey" aria-labelledby="journey-caption">
           <Image
             className="delivery-route-image"
@@ -115,11 +117,11 @@ export default function HomePage() {
             <p>Discover a more coordinated way from farm to buyer.</p>
             <Link href="/sign-in" className="closing-secondary">Already have an account? Sign in</Link>
           </div>
-          <Link href="/dashboard" className="button button-gold">Explore Rova <ArrowUpRight size={19} aria-hidden="true" /></Link>
+          <Link href="/sign-up" className="button button-gold">Get started <ArrowUpRight size={19} aria-hidden="true" /></Link>
         </div>
       </section>
 
-      <footer className="page-width site-footer"><div className="footer-brand"><Link href="/" className="brand-link" aria-label="Rova home"><Image src="/brand/rova-icon.png" alt="" width={34} height={34} /><Image src="/brand/rova-wordmark.png" alt="Rova" width={90} height={30} className="wordmark" /></Link><p>Shared agricultural freight.<br />Progress, together.</p></div><nav aria-label="Footer navigation"><a href="#flow">How it works</a><a href="#who-its-for">Who it’s for</a><Link href="/sign-in">Sign in <ArrowUpRight size={13} aria-hidden="true" /></Link></nav><span className="footer-note">Made for the journey ahead.</span></footer>
+      <footer className="page-width site-footer"><div className="footer-brand"><Link href="/" className="brand-link" aria-label="Rova home"><Image src="/brand/rova-icon.png" alt="" width={34} height={34} /><Image src="/brand/rova-wordmark.png" alt="Rova" width={90} height={30} className="wordmark" /></Link><p>Shared agricultural freight.<br />Progress, together.</p></div><nav aria-label="Footer navigation"><a href="#flow">How it works</a><a href="#who-its-for">Who it’s for</a><Link href="/sign-in">Sign in <ArrowUpRight size={13} aria-hidden="true" /></Link><Link href="/sign-up">Get started <ArrowUpRight size={13} aria-hidden="true" /></Link></nav><span className="footer-note">Made for the journey ahead.</span></footer>
 
       <style>{`
         html:has(.rova-landing) { scroll-behavior: smooth; scroll-padding-top: 100px; }
@@ -140,6 +142,8 @@ export default function HomePage() {
         .rova-landing .nav-right { display: flex; align-items: center; gap: 14px; }
         .rova-landing .nav-sign-in { display: inline-flex; align-items: center; gap: 20px; border: 1px solid #cad9ce; border-radius: 8px; min-height: 44px; padding: 10px 17px; font-size: 13px; font-weight: 600; color: var(--green); transition: background 180ms ease; }
         .rova-landing .nav-sign-in:hover { background: #e7eee5; }
+        .rova-landing .nav-get-started { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 17px; border-radius: 8px; font-size: 13px; font-weight: 600; color: white; background: var(--green); box-shadow: 0 4px 10px #1f5a4d12; transition: background 180ms ease, box-shadow 180ms ease; }
+        .rova-landing .nav-get-started:hover { background: #174739; box-shadow: 0 7px 20px #1f5a4d22; }
         .rova-landing .mobile-nav { display: none; }
         .rova-landing .mobile-nav > summary { list-style: none; cursor: pointer; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #cad9ce; border-radius: 8px; color: var(--green); transition: background 180ms ease; }
         .rova-landing .mobile-nav > summary::-webkit-details-marker { display: none; }
@@ -264,14 +268,14 @@ export default function HomePage() {
           .rova-landing .approach-section { grid-template-columns: 1fr; gap: 35px; }.rova-landing .approach-copy > p { max-width: 440px; }.rova-landing .closing-card { align-items: flex-start; flex-direction: column; padding: 39px; gap: 25px; }.rova-landing .site-footer { align-items: flex-start; flex-wrap: wrap; padding-block: 35px; }
         }
         @media (max-width: 520px) {
-          .rova-landing .page-width { width: calc(100% - 40px); }.rova-landing .navigation { gap: 12px; min-height: 72px; }.rova-landing .navigation .brand-link > img:first-child { width: 38px; height: 38px; }.rova-landing .navigation .wordmark { width: 96px; }.rova-landing .nav-sign-in { padding-inline: 13px; gap: 12px; }
+          .rova-landing .page-width { width: calc(100% - 40px); }.rova-landing .navigation { gap: 12px; min-height: 72px; }.rova-landing .navigation .brand-link > img:first-child { width: 38px; height: 38px; }.rova-landing .navigation .wordmark { width: 96px; }.rova-landing .nav-sign-in { padding-inline: 13px; gap: 12px; }.rova-landing .nav-get-started { display: none; }
           .rova-landing .eyebrow { font-size: 9px; letter-spacing: 1.4px; }.rova-landing h1 { font-size: clamp(43px, 11.8vw, 61px); letter-spacing: -2.7px; margin-block: 24px; }.rova-landing h1 span { letter-spacing: -2.3px; }.rova-landing .hero-description { font-size: 17px; }.rova-landing .hero-support { font-size: 13px; }
           .rova-landing .hero-actions { gap: 17px; }.rova-landing .hero-actions .button { font-size: 12px; gap: 10px; }.rova-landing .hero-note { font-size: 10px; }
           .rova-landing .load-summary { padding: 15px 13px; gap: 8px; }.rova-landing .load-icon { width: 34px; height: 37px; }.rova-landing .load-text strong { font-size: 13px; }.rova-landing .load-status { font-size: 9px; gap: 2px; padding: 5px; }.rova-landing .journey figcaption { padding: 10px 13px; }
           .rova-landing .community-strip { flex-direction: column; align-items: flex-start; padding-block: 25px; }.rova-landing .community-count { border-left: 0; padding-left: 62px; }.rova-landing .community-count strong { font-size: 26px; }
           .rova-landing .section-heading h2, .rova-landing .approach-copy h2 { font-size: 33px; }.rova-landing .step { padding: 22px 15px; }.rova-landing .step h3 { font-size: 13px; line-height: 1.5; min-height: 39px; }.rova-landing .step p { font-size: 11px; min-height: 102px; }.rova-landing .step-detail { font-size: 9px; line-height: 1.6; }.rova-landing .step-icon { width: 38px; height: 38px; }.rova-landing .step-number { font-size: 20px; }
           .rova-landing .person-content { padding: 25px; }.rova-landing .principle { gap: 14px; }.rova-landing .principle-number { display: none; }.rova-landing .closing-card { padding: 30px 24px; }.rova-landing .closing-card h2 { font-size: 28px; }.rova-landing .closing-card h2 br { display: none; }
-          .rova-landing .site-footer { gap: 22px; }.rova-landing .footer-brand { gap: 17px; }.rova-landing .footer-brand p { padding-left: 17px; }.rova-landing .site-footer nav { gap: 24px; }
+          .rova-landing .site-footer { gap: 22px; }.rova-landing .footer-brand { gap: 17px; }.rova-landing .footer-brand p { padding-left: 17px; }.rova-landing .site-footer nav { gap: 24px; flex-wrap: wrap; }
         }
         @media (max-width: 800px) {
           .rova-landing .harvest-photo { width: 100%; }
