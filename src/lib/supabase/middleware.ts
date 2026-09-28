@@ -1,6 +1,8 @@
 // src/lib/supabase/middleware.ts
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { ROLE_HOME, roleBaseOf } from "@/config/roles";
+import type { UserRole } from "@/types";
 
 const PUBLIC_PATHS = ["/", "/sign-in"];
 
@@ -36,12 +38,34 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  // Already signed in, no reason to see the sign-in page.
-  if (user && pathname === "/sign-in") {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/dashboard";
-    redirectUrl.search = "";
-    return NextResponse.redirect(redirectUrl);
+  if (user) {
+    // RLS's "account reads own profile" policy allows this — a user can only
+    // ever read their own row here, so this can't be used to probe others.
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("auth_user_id", user.id)
+      .maybeSingle();
+    const home = profile ? ROLE_HOME[profile.role as UserRole] : "/sign-in";
+
+    // Already signed in, no reason to see the sign-in page.
+    if (pathname === "/sign-in") {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = home;
+      redirectUrl.search = "";
+      return NextResponse.redirect(redirectUrl);
+    }
+
+    // One role's area, requested by a different role -> bounce to their own
+    // home. Admin is exempt: broader network visibility is intentional
+    // (see Admin Visibility in the role-dashboard spec).
+    const requestedBase = roleBaseOf(pathname);
+    if (requestedBase && profile?.role !== "admin" && requestedBase !== home) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = home;
+      redirectUrl.search = "";
+      return NextResponse.redirect(redirectUrl);
+    }
   }
 
   return response;
