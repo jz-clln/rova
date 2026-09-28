@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { signOut } from "@/app/sign-in/actions";
+import { signOut } from "@/app/(auth)/sign-in/actions";
 import { Button } from "@/components/ui/button";
 
 function SubmitButton() {
