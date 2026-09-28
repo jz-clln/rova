@@ -4,10 +4,18 @@ import { NextResponse, type NextRequest } from "next/server";
 import { ROLE_HOME, roleBaseOf } from "@/config/roles";
 import type { UserRole } from "@/types";
 
-const PUBLIC_PATHS = ["/", "/sign-in"];
+const PUBLIC_PATHS = ["/", "/sign-in", "/sign-up"];
+const AUTH_PAGES = ["/sign-in", "/sign-up"];
 
 function isPublicPath(pathname: string) {
-  return PUBLIC_PATHS.some((path) => pathname === path);
+  return PUBLIC_PATHS.includes(pathname);
+}
+
+function redirectTo(request: NextRequest, pathname: string) {
+  const redirectUrl = request.nextUrl.clone();
+  redirectUrl.pathname = pathname;
+  redirectUrl.search = "";
+  return NextResponse.redirect(redirectUrl);
 }
 
 export async function updateSession(request: NextRequest) {
@@ -31,41 +39,35 @@ export async function updateSession(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // No session, trying to reach a protected page -> bounce to sign-in.
-  if (!user && !isPublicPath(pathname)) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/sign-in";
-    redirectUrl.search = "";
-    return NextResponse.redirect(redirectUrl);
+  if (!user) {
+    return isPublicPath(pathname) ? response : redirectTo(request, "/sign-in");
   }
 
-  if (user) {
-    // RLS's "account reads own profile" policy allows this — a user can only
-    // ever read their own row here, so this can't be used to probe others.
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("auth_user_id", user.id)
-      .maybeSingle();
-    const home = profile ? ROLE_HOME[profile.role as UserRole] : "/sign-in";
+  // RLS's "account reads own profile" policy means this can only ever return
+  // the caller's own row.
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("auth_user_id", user.id)
+    .maybeSingle();
 
-    // Already signed in, no reason to see the sign-in page.
-    if (pathname === "/sign-in") {
-      const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = home;
-      redirectUrl.search = "";
-      return NextResponse.redirect(redirectUrl);
-    }
+  const role = profile?.role as UserRole | undefined;
+  const home = role ? ROLE_HOME[role] : null;
 
-    // One role's area, requested by a different role -> bounce to their own
-    // home. Admin is exempt: broader network visibility is intentional
-    // (see Admin Visibility in the role-dashboard spec).
-    const requestedBase = roleBaseOf(pathname);
-    if (requestedBase && profile?.role !== "admin" && requestedBase !== home) {
-      const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = home;
-      redirectUrl.search = "";
-      return NextResponse.redirect(redirectUrl);
-    }
+  // Signed in but no profile row (e.g. sign-up was interrupted). Never redirect
+  // public pages here: sending them to /sign-in from /sign-in would loop forever.
+  if (!home) {
+    return isPublicPath(pathname) ? response : redirectTo(request, "/sign-in");
+  }
+
+  // Already signed in, no reason to see the sign-in or sign-up pages.
+  if (AUTH_PAGES.includes(pathname)) return redirectTo(request, home);
+
+  // One role's area requested by a different role -> bounce to their own home.
+  // Admin is exempt: network-wide visibility is intentional.
+  const requestedBase = roleBaseOf(pathname);
+  if (requestedBase && role !== "admin" && requestedBase !== home) {
+    return redirectTo(request, home);
   }
 
   return response;
